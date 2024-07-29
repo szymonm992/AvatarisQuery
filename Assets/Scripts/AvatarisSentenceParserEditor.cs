@@ -39,7 +39,7 @@ public class AvatarisSentenceParserEditor : EditorWindow
             if (!string.IsNullOrEmpty(newQueryContent))
             {
                 allParsingQueries.Add(new ParsingQuery(newQueryContent, newQueryPriority));
-                EditorUtility.DisplayDialog("Success", $"Query \n {newQueryContent} \n with priority {newQueryPriority} has been added successfully!", "OK");
+                EditorUtility.DisplayDialog("Success", $"Query \n{newQueryContent} \nwith priority {newQueryPriority} has been added successfully!", "OK");
             }
             else
             {
@@ -77,11 +77,14 @@ public class AvatarisSentenceParserEditor : EditorWindow
         }
 
         GUILayout.EndScrollView();
+        EditorGUI.BeginDisabledGroup(allParsingQueries.Count <= 0);
 
         if (GUILayout.Button("Delete all Queries"))
         {
             allParsingQueries.Clear();
         }
+
+        EditorGUI.EndDisabledGroup();
 
         GUILayout.EndVertical();
         GUILayout.EndHorizontal();
